@@ -1,0 +1,16 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Tickets{% endblock %}
+
+{% block body %}
+<section>
+    <div class="container-fluid">
+      <h1>Tickets</h1>
+        <div>
+        {% for performance in performances %}
+            <a href="">{{ performance.title }}</a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

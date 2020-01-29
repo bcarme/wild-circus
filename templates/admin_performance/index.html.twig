@@ -1,0 +1,37 @@
+{% extends 'layoutAdmin.html.twig' %}
+
+{% block title %}Performance index{% endblock %}
+
+{% block body %}
+<div class="container-fluid p-5">
+    <h1 class="mb-3">List of Performances</h1>
+    <a href="{{ path('performance_new') }}" class="btn btn-primary mb-4">Add a new</a>
+
+    <table class="table">
+        <thead class="bg-light">
+            <tr>
+                <th>Title</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for performance in performances %}
+            <tr>
+                <td>{{ performance.title }}</td>
+                <td><img src="{{ performance.image }}"></td>
+                <td>
+                    <a href="{{ path('performance_show', {'id': performance.id}) }}" class="btn btn-secondary btn-sm">show</a>
+                    <a href="{{ path('performance_edit', {'id': performance.id}) }}" class="btn btn-success btn-sm">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'layoutAdmin.html.twig' %}
+
+{% block title %}Ticket index{% endblock %}
+
+{% block body %}
+<div class="container-fluid p-5">
+    <h1 class="mb-3">Ticket index</h1>
+    <a href="{{ path('ticket_new') }}" class="btn btn-primary mb-4">Add a new</a>
+
+    <table class="table">
+        <thead class="bg-light">
+            <tr>
+                <th>Date</th>
+                <th>Price</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ticket in tickets %}
+            <tr>
+                <td>{{ ticket.date ? ticket.date|date('Y-m-d') : '' }}</td>
+                <td>{{ ticket.price }}</td>
+                <td>
+                    <a href="{{ path('ticket_show', {'id': ticket.id}) }}" class="btn btn-secondary btn-sm">show</a>
+                    <a href="{{ path('ticket_edit', {'id': ticket.id}) }}" class="btn btn-success btn-sm">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+</div>
+{% endblock %}

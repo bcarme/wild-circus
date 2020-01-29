@@ -9,18 +9,23 @@ use Faker;
 
 class PerformanceFixtures extends Fixture
 {
+    const NAMES = ['Disco Logic', 'JuggleMatic', 'Marvel At', 'Abduction Sonore', 'Circus 101', 'Quatuor for a Dream'
+    ];
+
     public function load(ObjectManager $manager)
     {
+
         $faker = Faker\Factory::create();
 
-        for ($i = 0; $i < 6; $i++) {
+        $i=0;
+        foreach (self::NAMES as $name){
          $performance = new Performance();
-         $performance->setTitle($faker->text(5));
+         $performance->setTitle($name);
          $performance->setDescription($faker->text(100));
          $performance->setImage('https://i.imgur.com/oCkEbrA.png');
          $manager->persist($performance);
 
         $manager->flush();
-    }
+        }
     }
 }
