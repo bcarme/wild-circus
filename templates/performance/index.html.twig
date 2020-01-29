@@ -1,20 +1,30 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
-{% block title %}Hello PerformanceController!{% endblock %}
+{% block title %}Performance{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <section>
+        <h2 class="text-center mt-5 mb-3 title-animation">Performances</h2>
+        <h4 class="text-center">Come and be mesmerized by exceptional circus acts including juggling, acrobatics,
+            high-wire acts, dance, and many more performances, along with the music of a
+            live band playing a kind of rock-hip-hop-soul style !
+        </h4>
+        <div class="container-fluid">
+            <div class="row">
+                 {% for performance in performances %}
+                <div class="col-12 col-md-4 mt-0 mt-3 d-flex justify-content-center align-items-center"">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="{{ performance.image }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{performance.title}}</h5>
+                        <p class="card-text">{{performance.description|u.wordwrap(8)}}</p>
+                        <a href="#" class="btn btn-primary">See more</a>
+                    </div>
+                </div>
+                </div>
+                {% endfor %}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/barbara/Documents/checkpoint/checkpoint4/src/Controller/PerformanceController.php'|file_link(0) }}">src/Controller/PerformanceController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/barbara/Documents/checkpoint/checkpoint4/templates/performance/index.html.twig'|file_link(0) }}">templates/performance/index.html.twig</a></code></li>
-    </ul>
-</div>
+            </div>
+        </div>
+    </section>
 {% endblock %}
