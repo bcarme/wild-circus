@@ -10,10 +10,11 @@
             <a class="nav-item nav-link" href="{{ path('performance_view') }}">Performances</a>
             <a class="nav-item nav-link" href="{{ path('buy_ticket') }}">Events</a>
             <a class="nav-item nav-link" href="{{ path('contact') }}">Contact</a>
-            {% if app.user %}
+                {% if app.user %}
                 <a class="nav-item nav-link" href="{{ path('app_logout') }}">Log out</a>
             {% else %}
-                <a  class="nav-item nav-link" href="{{ path('app_login') }}"> Log in</a>
+                <a class="nav-item nav-link" href="{{ path('app_login') }}">Log in</a>
+                    <a class="nav-item nav-link" href="{{ path('app_register') }}">Sign up</a>
             {% endif %}
         </a>
         </div>

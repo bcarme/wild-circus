@@ -19,32 +19,12 @@ class PerformanceRepository extends ServiceEntityRepository
         parent::__construct($registry, Performance::class);
     }
 
-    // /**
-    //  * @return PerformanceFixtures[] Returns an array of PerformanceFixtures objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function searchByName($search)
     {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        $qb = $this->createQueryBuilder('p')
+            ->where('p.title LIKE :title' )
+            ->setParameter('title', '%' . $search .'%')
+            ->getQuery();
+        return $qb->execute();
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?PerformanceFixtures
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

@@ -3,12 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Book;
-use App\Repository\BookingRepository;
+use App\Form\BookType;
 use App\Entity\Performance;
 use App\Repository\PerformanceRepository;
 use App\Repository\TicketRepository;
 use App\Entity\Ticket;
-use App\Form\BookType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,33 +29,26 @@ class BuyTicketController extends AbstractController
             ->findAll();
 
 
+        $book = new Book();
+        $form = $this->createForm(BookType::class, $book);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $book->setAuthor($this->getUser());
+            $book->setTicket();
+            $book->setQuantity();
+            $book->setTicket();
+            $entityManager->persist($book);
+            $entityManager->flush();
+            return $this->redirectToRoute('buy_ticket');
+        }
+
         return $this->render('buy_ticket/index.html.twig', [
             'performances' => $performances,
             'tickets' => $tickets,
+            'form' =>$form->createView()
         ]);
-
-        /**
-         * @Route("/buy-ticket/{ticket}", name="buy_ticket")
-         */
-        public
-        function index(Ticket $ticket, Request $request): Response
-        {
-            $performance = $this->getDoctrine()
-                ->getRepository(Performance::class)
-                ->find();
-            $ticket = $this->getDoctrine()
-                ->getRepository(Ticket::class)
-                ->find();
-
-
-            return $this->render('buy_ticket/index.html.twig', [
-                'performance' => $performance,
-                'ticket' => $ticket,
-            ]);
-
-        }
-
-
     }
 
-}
+      }
+

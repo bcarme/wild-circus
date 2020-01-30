@@ -6,13 +6,19 @@
     <section>
         <h1 class="m-5 pl-3">Performances</h1>
         <div class="row">
-            <div class="ml-0 col-sm-12 col-lg-6 ml-md-5">
+            <div class="ml-0 col-sm-12 col-lg-11 ml-md-5">
         <p class="pl-3">Come and be mesmerized by exceptional circus acts including juggling, acrobatics,
             high-wire acts, dance, and many more performances, along with the music of a
             live band playing a kind of rock-hip-hop-soul style !
         </p>
+                <div class="container">
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                {{ form_end(form) }}
+                </div>
             </div>
         </div>
+
         <div class="container-fluid">
             <div class="row pt-2 pl-5 pr-5">
                  {% for performance in performances %}
@@ -20,7 +26,7 @@
                 <div class="card shadow">
                     <img class="card-img-top" src="{{ performance.image }}" alt="Card image cap">
                     <div class="card-body">
-                        <h4 class="card__title"><a href="{{path('performance_show', {'id': performance.id}) }}">{{performance.title}}</a></h4>
+                        <h4 class="card__title"><a href="{{path('performance_one', {'id': performance.id}) }}">{{performance.title}}</a></h4>
                     </div>
                 </div>
                 </div>

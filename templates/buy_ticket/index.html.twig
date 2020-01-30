@@ -7,8 +7,9 @@
     <div class="container-fluid">
       <h1 class="m-5">Next shows</h1>
         <div class="row">
-            <div class="col-7 ml-4">
+            <div class="col-12 m-4">
                 {% for ticket in tickets %}
+                 {%  if date(ticket.date) > date('now', 'Europe/Paris')%}
                 <div class="card__box col-md-8 col-sm-12">
                     <div class="card_card shadow">
                         <div class="card__img">
@@ -19,23 +20,29 @@
                             <h4 class="card__title">{{ticket.performanceName.title}}</h4>
                             <p class="card__description">Et id consequatur illo quia facere. Autem placeat ipsa inventore rerum expedita dolorum. Nesciunt aut non a officia ex maxime omnis dicta. Fugit deserunt aspernatur qui. Distinctio omnis omnis ut sit perspiciatis quidem voluptatem.</p>
                             <a>
-                                <a href="" class="card__bottom">
+                                <a class="card__bottom">
                                 <div class="options">
              <span class="date">
               <i class="fa fa-calendar mr-3" aria-hidden="true"></i>{{ ticket.date | date ('d M Y') }}
-             </span>
+             </span><span class="date">{{ ticket.hour | date ('H:i') }}</span>
                                 </div>
                                 <div class="card__price">
                                     {{ticket.price}} €
                                 </div>
                             </a>
+                            </a>
                             {% if app.user %}
-                                <a href=""><b>Book now</b></a>
+                                <a href="{{ path('contact') }}">
+                                <button class="btn btn-primary btn-sm mt-1">Book now</button>
+                                </a>
                             {% endif %}
                         </div>
+
                     </div>
                 </div><!-- /card__box -->
+                    {% endif %}
             {% endfor %}
+
         </div>
     </div>
     </div>

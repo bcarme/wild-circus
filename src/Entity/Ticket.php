@@ -29,6 +29,27 @@ class Ticket
     private $date;
 
     /**
+     * @ORM\Column(type="time")
+     */
+    private $hour;
+
+    /**
+     * @return mixed
+     */
+    public function getHour()
+    {
+        return $this->hour;
+    }
+
+    /**
+     * @param mixed $hour
+     */
+    public function setHour($hour): void
+    {
+        $this->hour = $hour;
+    }
+
+    /**
      * @ORM\Column(type="float")
      */
     private $price;
@@ -48,6 +69,7 @@ class Ticket
     public function __construct()
     {
         $this->books = new ArrayCollection();
+        $this->reservations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -133,7 +155,6 @@ class Ticket
 
         return $this;
     }
-
 
 
 }

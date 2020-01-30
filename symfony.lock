@@ -1,4 +1,10 @@
 {
+    "bacon/bacon-qr-code": {
+        "version": "2.0.0"
+    },
+    "dasprid/enum": {
+        "version": "1.0.0"
+    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
@@ -105,14 +111,23 @@
     "egulias/email-validator": {
         "version": "2.1.15"
     },
+    "endroid/qr-code": {
+        "version": "3.7.5"
+    },
     "fzaninotto/faker": {
         "version": "v1.9.1"
     },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
+    "khanamiryan/qrcode-detector-decoder": {
+        "version": "1.0.2"
+    },
     "monolog/monolog": {
         "version": "2.0.2"
+    },
+    "myclabs/php-enum": {
+        "version": "1.7.2"
     },
     "nikic/php-parser": {
         "version": "v4.3.0"

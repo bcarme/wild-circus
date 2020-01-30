@@ -17,7 +17,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class AdminTicketController extends AbstractController
 {
     /**
-     * @Route("/", name="ticket_index", methods={"GET"})
+     * @Route("/", name="admin_ticket_index", methods={"GET"})
      * @IsGranted("ROLE_ADMIN", message="access denied")
      */
     public function index(TicketRepository $ticketRepository): Response
@@ -28,7 +28,7 @@ class AdminTicketController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="ticket_new", methods={"GET","POST"})
+     * @Route("/new", name="admin_ticket_new", methods={"GET","POST"})
      * @IsGranted("ROLE_ADMIN", message="access denied")
      */
     public function new(Request $request): Response
@@ -42,7 +42,7 @@ class AdminTicketController extends AbstractController
             $entityManager->persist($ticket);
             $entityManager->flush();
 
-            return $this->redirectToRoute('ticket_index');
+            return $this->redirectToRoute('admin_ticket_index');
         }
 
         return $this->render('admin_ticket/new.html.twig', [
@@ -52,7 +52,7 @@ class AdminTicketController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="ticket_show", methods={"GET"})
+     * @Route("/{id}", name="admin_ticket_show", methods={"GET"})
      * @IsGranted("ROLE_ADMIN", message="access denied")
      */
     public function show(Ticket $ticket): Response
@@ -63,7 +63,7 @@ class AdminTicketController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="ticket_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="admin_ticket_edit", methods={"GET","POST"})
      * @IsGranted("ROLE_ADMIN", message="access denied")
      */
     public function edit(Request $request, Ticket $ticket): Response
@@ -74,17 +74,17 @@ class AdminTicketController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('ticket_index');
+            return $this->redirectToRoute('admin_ticket_index');
         }
 
-        return $this->render('ticket/edit.html.twig', [
+        return $this->render('admin_ticket/edit.html.twig', [
             'ticket' => $ticket,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/{id}", name="ticket_delete", methods={"DELETE"})
+     * @Route("/{id}", name="admin_ticket_delete", methods={"DELETE"})
      * @IsGranted("ROLE_ADMIN", message="access denied")
      */
     public function delete(Request $request, Ticket $ticket): Response
@@ -95,6 +95,6 @@ class AdminTicketController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('ticket_index');
+        return $this->redirectToRoute('admin_ticket_index');
     }
 }

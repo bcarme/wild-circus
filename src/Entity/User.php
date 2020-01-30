@@ -48,6 +48,7 @@ class User implements UserInterface
     {
         $this->show_name = new ArrayCollection();
         $this->comment = new ArrayCollection();
+        $this->reservations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -189,4 +190,6 @@ class User implements UserInterface
 
         return $this;
     }
+
+
 }

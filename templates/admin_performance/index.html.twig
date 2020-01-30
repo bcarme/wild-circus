@@ -5,7 +5,7 @@
 {% block body %}
 <div class="container-fluid p-5">
     <h1 class="mb-3">List of Performances</h1>
-    <a href="{{ path('performance_new') }}" class="btn btn-primary mb-4">Add a new</a>
+    <a href="{{ path('admin_performance_new') }}" class="btn btn-primary mb-4">Add a new</a>
 
     <table class="table">
         <thead class="bg-light">
@@ -20,9 +20,12 @@
             <tr>
                 <td>{{ performance.title }}</td>
                 <td><img src="{{ performance.image }}" class="img-crud"></td>
-                <td>
-                    <a href="{{ path('performance_show', {'id': performance.id}) }}" class="btn btn-secondary btn-sm">show</a>
-                    <a href="{{ path('performance_edit', {'id': performance.id}) }}" class="btn btn-success btn-sm">edit</a>
+                <td class="d-flex pt-3">
+                    <a href="{{ path('admin_performance_show', {'id': performance.id}) }}" class="btn btn-secondary mr-2">show</a>
+                    <a href="{{ path('admin_performance_edit', {'id': performance.id}) }}" class="btn btn-success mr-2">edit</a>
+                    <div>
+                        {{ include('admin_performance/_delete_form.html.twig') }}
+                    </div>
                 </td>
             </tr>
         {% else %}

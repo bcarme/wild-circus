@@ -17,7 +17,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class AdminPerformanceController extends AbstractController
 {
     /**
-     * @Route("/", name="performance_index", methods={"GET"})
+     * @Route("/", name="admin_performance_index", methods={"GET"})
      * @IsGranted("ROLE_ADMIN", message="access denied")
      */
     public function index(PerformanceRepository $performanceRepository): Response
@@ -28,7 +28,7 @@ class AdminPerformanceController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="performance_new", methods={"GET","POST"})
+     * @Route("/new", name="admin_performance_new", methods={"GET","POST"})
      * @IsGranted("ROLE_ADMIN", message="access denied")
      */
     public function new(Request $request): Response
@@ -42,7 +42,7 @@ class AdminPerformanceController extends AbstractController
             $entityManager->persist($performance);
             $entityManager->flush();
 
-            return $this->redirectToRoute('performance_index');
+            return $this->redirectToRoute('admin_performance_index');
         }
 
         return $this->render('admin_performance/new.html.twig', [
@@ -52,7 +52,7 @@ class AdminPerformanceController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="performance_show", methods={"GET"})
+     * @Route("/{id}", name="admin_performance_show", methods={"GET"})
      * @IsGranted("ROLE_ADMIN", message="access denied")
      */
     public function show(Performance $performance): Response
@@ -63,7 +63,7 @@ class AdminPerformanceController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="performance_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="admin_performance_edit", methods={"GET","POST"})
      * @IsGranted("ROLE_ADMIN", message="access denied")
      */
     public function edit(Request $request, Performance $performance): Response
@@ -74,7 +74,7 @@ class AdminPerformanceController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('performance_index');
+            return $this->redirectToRoute('admin_performance_index');
         }
 
         return $this->render('admin_performance/edit.html.twig', [
@@ -84,7 +84,7 @@ class AdminPerformanceController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="performance_delete", methods={"DELETE"})
+     * @Route("/{id}", name="admin_performance_delete", methods={"DELETE"})
      * @IsGranted("ROLE_ADMIN", message="access denied")
      */
     public function delete(Request $request, Performance $performance): Response
@@ -95,6 +95,6 @@ class AdminPerformanceController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('performance_index');
+        return $this->redirectToRoute('admin_performance_index');
     }
 }
