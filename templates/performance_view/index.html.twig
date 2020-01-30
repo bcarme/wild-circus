@@ -4,21 +4,23 @@
 
 {% block body %}
     <section>
-        <h2 class="text-center mt-5 mb-3 title-animation">Performances</h2>
-        <h4 class="text-center">Come and be mesmerized by exceptional circus acts including juggling, acrobatics,
+        <h1 class="m-5 pl-3">Performances</h1>
+        <div class="row">
+            <div class="col-6 ml-5">
+        <p class="pl-3">Come and be mesmerized by exceptional circus acts including juggling, acrobatics,
             high-wire acts, dance, and many more performances, along with the music of a
             live band playing a kind of rock-hip-hop-soul style !
-        </h4>
+        </p>
+            </div>
+        </div>
         <div class="container-fluid">
-            <div class="row">
+            <div class="row pt-2 pl-5 pr-5">
                  {% for performance in performances %}
-                <div class="col-12 col-md-4 mt-0 mt-3 d-flex justify-content-center align-items-center"">
-                <div class="card" style="width: 18rem;">
+                <div class="col-12 col-md-3 mt-3 mb-5 d-flex justify-content-center align-items-center"">
+                <div class="card shadow">
                     <img class="card-img-top" src="{{ performance.image }}" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">{{performance.title}}</h5>
-                        <p class="card-text">{{performance.description|u.wordwrap(8)}}</p>
-                        <a href="#" class="btn btn-primary">See more</a>
+                        <h4 class="card__title"><a href="#">{{performance.title}}</a></h4>
                     </div>
                 </div>
                 </div>

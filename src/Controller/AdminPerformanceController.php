@@ -43,7 +43,7 @@ class AdminPerformanceController extends AbstractController
         }
 
         return $this->render('admin_performance/new.html.twig', [
-            'admin_performance' => $performance,
+            'performance' => $performance,
             'form' => $form->createView(),
         ]);
     }
@@ -54,7 +54,7 @@ class AdminPerformanceController extends AbstractController
     public function show(Performance $performance): Response
     {
         return $this->render('admin_performance/show.html.twig', [
-            'admin_performance' => $performance,
+            'performance' => $performance,
         ]);
     }
 
@@ -73,7 +73,7 @@ class AdminPerformanceController extends AbstractController
         }
 
         return $this->render('admin_performance/edit.html.twig', [
-            'admin_performance' => $performance,
+            'performance' => $performance,
             'form' => $form->createView(),
         ]);
     }

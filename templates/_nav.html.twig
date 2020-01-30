@@ -4,13 +4,18 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="navbar-nav">
+            <a class="nav-item nav-link active" href="{{ path('home') }}">Home <span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link" href="{{ path('about_us') }}">About Us</a>
             <a class="nav-item nav-link" href="{{ path('performance_view') }}">Performances</a>
             <a class="nav-item nav-link" href="{{ path('buy_ticket') }}">Tickets</a>
             <a class="nav-item nav-link" href="#">Contact</a>
-            <a class="nav-item nav-link" href="#">Log in</a>
+            {% if app.user %}
+                <a class="nav-item nav-link" href="{{ path('app_logout') }}">Log out</a>
+            {% else %}
+                <a  class="nav-item nav-link" href="{{ path('app_login') }}"> Log in</a>
+            {% endif %}
+
         </div>
     </div>
 </nav>

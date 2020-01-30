@@ -11,6 +11,7 @@
         <thead class="bg-light">
             <tr>
                 <th>Date</th>
+                <th>Performance name</th>
                 <th>Price</th>
                 <th>actions</th>
             </tr>
@@ -18,7 +19,8 @@
         <tbody>
         {% for ticket in tickets %}
             <tr>
-                <td>{{ ticket.date ? ticket.date|date('Y-m-d') : '' }}</td>
+                <td>{{ ticket.date ? ticket.date|date('d M Y') : '' }}</td>
+                <td>{{ ticket.performanceName.title }}</td>
                 <td>{{ ticket.price }}</td>
                 <td>
                     <a href="{{ path('ticket_show', {'id': ticket.id}) }}" class="btn btn-secondary btn-sm">show</a>

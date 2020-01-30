@@ -5,12 +5,53 @@
 {% block body %}
 <section>
     <div class="container-fluid">
-      <h1>Tickets</h1>
-        <div>
-        {% for performance in performances %}
-            <a href="">{{ performance.title }}</a>
+      <h1 class="m-5">Next shows</h1>
+        <div class="row">
+            <div class="col-7 ml-4">
+                {% for ticket in tickets %}
+                <div class="card__box col-md-8 col-sm-12">
+                    <div class="card_card shadow">
+                        <div class="card__img">
+                            <img class="card__img-preview" src="{{ticket.performanceName.image }}" alt="Image name">
+                            <div class="card-img-overlay"><span class="badge badge-pill badge-danger">12 ticket left</span> </div>
+                        </div>
+                        <div class="card__content">
+                            <h4 class="card__title">{{ticket.performanceName.title}}</h4>
+                            <p class="card__description">Et id consequatur illo quia facere. Autem placeat ipsa inventore rerum expedita dolorum. Nesciunt aut non a officia ex maxime omnis dicta. Fugit deserunt aspernatur qui. Distinctio omnis omnis ut sit perspiciatis quidem voluptatem.</p>
+                            <div class="card__bottom">
+                                <div class="options">
+             <span class="date">
+              <i class="fa fa-calendar mr-3" aria-hidden="true"></i>{{ ticket.date | date ('d M Y') }}
+             </span>
+                                </div>
+                                <div class="card__price">
+                                    {{ticket.price}} €
+                                </div>
+                            </div>
+                            {% if app.user %}
+                                <a href="">Book now</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div><!-- /card__box -->
             {% endfor %}
         </div>
+        <div class="col-4 rowHeight bg-light">
+            {% if app.user %}
+                <div class="container-fluid mt-5">
+                    <h2>Book a ticket</h2>
+{#                    <p>{{ ticket.date }}</p>#}
+{#                    <p>{{ ticket.performanceName.title }}</p>#}
+{#                    <p>{{ ticket.price }}</p>#}
+                    <div class="row ">
+                        <div class="col-6">
+                            {{ include('booking/_form.html.twig') }}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
     </div>
 </section>
 {% endblock %}

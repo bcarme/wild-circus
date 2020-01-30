@@ -1,6 +1,76 @@
 @import "~bootstrap/scss/bootstrap";
 @import "vars";
+@import "ticket";
 
+
+@import url(https://fonts.googleapis.com/css?family=Advent+Pro:100);
+.bk {
+    background:  url(http://upload.wikimedia.org/wikipedia/commons/d/dd/Muybridge_race_horse_animated.gif) no-repeat center center fixed;
+    background-size: cover;
+
+}
+
+body {
+    height: 100%;
+}
+
+nav{
+    position:fixed;
+    z-index: 4;
+}
+
+.nav-link, .navbar-brand{
+    color:whitesmoke;
+    font-size: 1em;
+    font-weight: bold;
+    font-family: 'Overpass', serif;
+    text-transform: uppercase;
+
+    &:hover{
+        color:$pink-color;
+    }
+}
+
+h1{
+    font-size: 2.5em;
+    font-family: 'Overpass', serif;
+    font-weight: bold;
+}
+
+h2{
+    font-size: 2em;
+    font-family: 'Overpass', serif;
+    font-weight: bold;
+}
+
+h3{
+    font-size: 1.5em;
+    font-family: 'Overpass', serif;
+    font-weight: bold;
+}
+
+h4{
+    font-size: 1.5em;
+    font-family: 'Overpass', serif;
+    font-weight: bold;
+}
+
+p{
+    font-family: Raleway, serif;
+    font-size: 17px;
+}
+
+section{
+    height: 100vh;
+}
+
+.rowHeight{
+    height:100vh;
+}
+
+.img-crud{
+    width: 250px;
+}
 .carousel-item {
     height: 550px;
         img {
@@ -17,6 +87,4 @@
     }
 }
 
-section{
-    height: 90vh;
-}
+

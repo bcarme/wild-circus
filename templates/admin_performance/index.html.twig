@@ -19,7 +19,7 @@
         {% for performance in performances %}
             <tr>
                 <td>{{ performance.title }}</td>
-                <td><img src="{{ performance.image }}"></td>
+                <td><img src="{{ performance.image }}" class="img-crud"></td>
                 <td>
                     <a href="{{ path('performance_show', {'id': performance.id}) }}" class="btn btn-secondary btn-sm">show</a>
                     <a href="{{ path('performance_edit', {'id': performance.id}) }}" class="btn btn-success btn-sm">edit</a>
