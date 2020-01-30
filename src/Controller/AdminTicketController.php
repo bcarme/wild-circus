@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("admin/ticket")
@@ -17,6 +18,7 @@ class AdminTicketController extends AbstractController
 {
     /**
      * @Route("/", name="ticket_index", methods={"GET"})
+     * @IsGranted("ROLE_ADMIN", message="access denied")
      */
     public function index(TicketRepository $ticketRepository): Response
     {
@@ -27,6 +29,7 @@ class AdminTicketController extends AbstractController
 
     /**
      * @Route("/new", name="ticket_new", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN", message="access denied")
      */
     public function new(Request $request): Response
     {
@@ -50,6 +53,7 @@ class AdminTicketController extends AbstractController
 
     /**
      * @Route("/{id}", name="ticket_show", methods={"GET"})
+     * @IsGranted("ROLE_ADMIN", message="access denied")
      */
     public function show(Ticket $ticket): Response
     {
@@ -60,6 +64,7 @@ class AdminTicketController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="ticket_edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN", message="access denied")
      */
     public function edit(Request $request, Ticket $ticket): Response
     {
@@ -80,6 +85,7 @@ class AdminTicketController extends AbstractController
 
     /**
      * @Route("/{id}", name="ticket_delete", methods={"DELETE"})
+     * @IsGranted("ROLE_ADMIN", message="access denied")
      */
     public function delete(Request $request, Ticket $ticket): Response
     {

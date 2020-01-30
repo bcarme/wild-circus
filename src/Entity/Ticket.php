@@ -34,19 +34,20 @@ class Ticket
     private $price;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Booking", mappedBy="show_name")
+     * @ORM\OneToMany(targetEntity="App\Entity\Book", mappedBy="ticket")
      */
-    private $bookings;
+    private $books;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Booking", mappedBy="show_date")
+     * @ORM\Column(type="integer", nullable=true)
      */
-    private $dates;
+    private $spectator;
+
+
 
     public function __construct()
     {
-        $this->bookings = new ArrayCollection();
-        $this->dates = new ArrayCollection();
+        $this->books = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -91,64 +92,48 @@ class Ticket
     }
 
     /**
-     * @return Collection|Booking[]
+     * @return Collection|Book[]
      */
-    public function getBookings(): Collection
+    public function getBooks(): Collection
     {
-        return $this->bookings;
+        return $this->books;
     }
 
-    public function addBooking(Booking $booking): self
+    public function addBook(Book $book): self
     {
-        if (!$this->bookings->contains($booking)) {
-            $this->bookings[] = $booking;
-            $booking->setShowName($this);
+        if (!$this->books->contains($book)) {
+            $this->books[] = $book;
+            $book->setTicket($this);
         }
 
         return $this;
     }
 
-    public function removeBooking(Booking $booking): self
+    public function removeBook(Book $book): self
     {
-        if ($this->bookings->contains($booking)) {
-            $this->bookings->removeElement($booking);
+        if ($this->books->contains($book)) {
+            $this->books->removeElement($book);
             // set the owning side to null (unless already changed)
-            if ($booking->getShowName() === $this) {
-                $booking->setShowName(null);
+            if ($book->getTicket() === $this) {
+                $book->setTicket(null);
             }
         }
 
         return $this;
     }
 
-    /**
-     * @return Collection|Booking[]
-     */
-    public function getDates(): Collection
+    public function getSpectator(): ?int
     {
-        return $this->dates;
+        return $this->spectator;
     }
 
-    public function addDates(Booking $dates): self
+    public function setSpectator(?int $spectator): self
     {
-        if (!$this->dates->contains($dates)) {
-            $this->dates[] = $dates;
-            $dates->setShowDate($this);
-        }
+        $this->spectator = $spectator;
 
         return $this;
     }
 
-    public function removeDates(Booking $dates): self
-    {
-        if ($this->dates->contains($dates)) {
-            $this->dates->removeElement($dates);
-            // set the owning side to null (unless already changed)
-            if ($dates->getShowDate() === $this) {
-                $dates->setShowDate(null);
-            }
-        }
 
-        return $this;
-    }
+
 }

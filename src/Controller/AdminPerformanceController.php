@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/admin/performance")
@@ -17,6 +18,7 @@ class AdminPerformanceController extends AbstractController
 {
     /**
      * @Route("/", name="performance_index", methods={"GET"})
+     * @IsGranted("ROLE_ADMIN", message="access denied")
      */
     public function index(PerformanceRepository $performanceRepository): Response
     {
@@ -27,6 +29,7 @@ class AdminPerformanceController extends AbstractController
 
     /**
      * @Route("/new", name="performance_new", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN", message="access denied")
      */
     public function new(Request $request): Response
     {
@@ -50,6 +53,7 @@ class AdminPerformanceController extends AbstractController
 
     /**
      * @Route("/{id}", name="performance_show", methods={"GET"})
+     * @IsGranted("ROLE_ADMIN", message="access denied")
      */
     public function show(Performance $performance): Response
     {
@@ -60,6 +64,7 @@ class AdminPerformanceController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="performance_edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN", message="access denied")
      */
     public function edit(Request $request, Performance $performance): Response
     {
@@ -80,6 +85,7 @@ class AdminPerformanceController extends AbstractController
 
     /**
      * @Route("/{id}", name="performance_delete", methods={"DELETE"})
+     * @IsGranted("ROLE_ADMIN", message="access denied")
      */
     public function delete(Request $request, Performance $performance): Response
     {

@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'layoutAdmin.html.twig' %}
 
 {% block title %}Booking index{% endblock %}
 
@@ -10,8 +10,10 @@
             <tr>
                 <th>Id</th>
                 <th>Name</th>
-                <th>Ticket_number</th>
-                <th>actions</th>
+                <th>Ticket quantity</th>
+                <th>Performance title</th>
+                <th>Performance date</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -20,6 +22,9 @@
                 <td>{{ booking.id }}</td>
                 <td>{{ booking.name }}</td>
                 <td>{{ booking.ticketNumber }}</td>
+                <td>{{ booking.show_date.date | date('d M Y') }}</td>
+                <td>{{ booking.show_name.title }}</td>
+
                 <td>
                     <a href="{{ path('booking_show', {'id': booking.id}) }}">show</a>
                     <a href="{{ path('booking_edit', {'id': booking.id}) }}">edit</a>

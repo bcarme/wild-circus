@@ -5,10 +5,9 @@
 {% block body %}
 <section>
     <div class="container-fluid">
-      <h1 class="m-5">Next shows</h1>
-        <div class="row">
+        <div class="row mt-5">
             <div class="col-7 ml-4">
-                {% for ticket in tickets %}
+
                 <div class="card__box col-md-8 col-sm-12">
                     <div class="card_card shadow">
                         <div class="card__img">
@@ -18,7 +17,7 @@
                         <div class="card__content">
                             <h4 class="card__title">{{ticket.performanceName.title}}</h4>
                             <p class="card__description">Et id consequatur illo quia facere. Autem placeat ipsa inventore rerum expedita dolorum. Nesciunt aut non a officia ex maxime omnis dicta. Fugit deserunt aspernatur qui. Distinctio omnis omnis ut sit perspiciatis quidem voluptatem.</p>
-                            <a>
+                            <div>
                                 <a href="" class="card__bottom">
                                 <div class="options">
              <span class="date">
@@ -29,14 +28,19 @@
                                     {{ticket.price}} €
                                 </div>
                             </a>
-                            {% if app.user %}
-                                <a href=""><b>Book now</b></a>
-                            {% endif %}
+                            </div>
                         </div>
                     </div>
                 </div><!-- /card__box -->
-            {% endfor %}
+
         </div>
+                <div class="col-4">
+                    {% if app.user %}
+                        <div>
+                            {{ include('booking/_form.html.twig') }}
+                        </div>
+            {% endif %}
+                </div>
     </div>
     </div>
 </section>
