@@ -41,7 +41,7 @@ class AdminTicketController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($ticket);
             $entityManager->flush();
-
+            $this->addFlash('success', 'Event was created in database!');
             return $this->redirectToRoute('admin_ticket_index');
         }
 
@@ -73,7 +73,7 @@ class AdminTicketController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
+            $this->addFlash('success', 'Event was edited in database!');
             return $this->redirectToRoute('admin_ticket_index');
         }
 
@@ -93,6 +93,7 @@ class AdminTicketController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($ticket);
             $entityManager->flush();
+            $this->addFlash('success', 'Event was deleted in database!');
         }
 
         return $this->redirectToRoute('admin_ticket_index');
