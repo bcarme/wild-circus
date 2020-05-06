@@ -1,6 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap&subset=latin-ext');
-@import url('https://fonts.googleapis.com/css?family=Amatic+SC&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Overpass&display=swap');
 
 
-$title-color:#F08080;
+$pink-color:#E35354;
 
+$dc-promo-gradient: linear-gradient(
+                307deg,
+                transparent 0%,
+                transparent 53%,
+                #ffffff 53%,
+                #f0f4f5 100%
+),
+linear-gradient(to bottom, #ffffff 0%, #f0f4f5 100%);
+$dc-promo-gradient-light: linear-gradient(193deg, #f0f4f5, #ffffff);

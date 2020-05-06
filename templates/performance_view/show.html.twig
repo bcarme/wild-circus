@@ -1,0 +1,22 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Performance{% endblock %}
+
+{% block body %}
+    <section class="h-100">
+        <div class="container-fluid">
+            <div class="row mt-5">
+            <div class="col-6 p-0">
+                <img class="card-img-top" src="{{ performance.image }}" alt="Card image cap">
+            </div>
+                <div class="col-6 d-flex flex-column justify-content-around align-items-center">
+                    <div class="m-2 pt-5">
+                    <h1 class="pb-5">{{performance.title}}</h1>
+                    <p>{{performance.description}}</p>
+                        <a href="{{ path('buy_ticket') }}"><button class="btn btn-primary btn-sm">Book now</button></a>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

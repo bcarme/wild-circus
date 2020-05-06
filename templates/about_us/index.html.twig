@@ -1,0 +1,28 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Hello AboutUsController!{% endblock %}
+
+{% block body %}
+<section class="h-100">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="pt-2 col-sm-12 col-lg-6 mt-md-5">
+                <div class="m-0 m-md-5">
+                <h1 class="mb-3">About us</h1>
+                Wild Circus is a Canadian circus company founded in 2007 by Claire Peridoux and Adam Wild.
+                Their love for circus and experiences as aerial skills performers led them to set up Wild Circus.
+                Established in a former theater, in the Chinese district of Montreal, Claire and Adam have refurbished the
+                location with the support of the Montreal Arts Council.
+                They recruited the best performers from around the world to create classical circus shows with a modern twist.
+                The company now employs 40 artists and proposes 20 performances and keep creating new acts each year for
+                the pleasure of children and adults alike.
+                Wild Circus have toured all around the world performing at international festivals such as the Fringe
+                Festival in Edinburgh, the Burning Man in the Nevada desert.
+                </div>
+            </div>
+            <div class="pt-2 col-sm-12 col-lg-6 mt-md-5">
+                <img src="{{ asset('build/images/couple.jpg') }}" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
