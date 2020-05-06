@@ -5,6 +5,8 @@
         "php": "^7.2.5",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "bacon/bacon-qr-code": "^2.0",
+        "dompdf/dompdf": "^0.8.5",
         "endroid/qr-code": "^3.7",
         "fzaninotto/faker": "^1.9",
         "sensio/framework-extra-bundle": "^5.1",
@@ -33,7 +35,8 @@
         "symfony/webpack-encore-bundle": "^1.7",
         "symfony/yaml": "5.0.*",
         "twig/intl-extra": "^3.0",
-        "twig/string-extra": "^3.0"
+        "twig/string-extra": "^3.0",
+        "yellowskies/qr-code-bundle": "^1.2"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.3",

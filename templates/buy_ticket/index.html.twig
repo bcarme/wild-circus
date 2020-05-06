@@ -5,9 +5,8 @@
 {% block body %}
 <section>
     <div class="container-fluid">
-      <h1 class="m-5">Next shows</h1>
-        <div class="row">
-            <div class="col-12 m-4">
+      <h1 class="p-5">Next shows</h1>
+        <div class="row justify-content-center">
                 {% for ticket in tickets %}
                  {%  if date(ticket.date) > date('now', 'Europe/Paris')%}
                 <div class="card__box col-md-8 col-sm-12">
@@ -22,9 +21,9 @@
                             <a>
                                 <a class="card__bottom">
                                 <div class="options">
-             <span class="date">
-              <i class="fa fa-calendar mr-3" aria-hidden="true"></i>{{ ticket.date | date ('d M Y') }}
-             </span><span class="date">{{ ticket.hour | date ('H:i') }}</span>
+                                 <span class="date">
+                                  <i class="fa fa-calendar mr-3" aria-hidden="true"></i>{{ ticket.date | date ('d M Y') }}
+                                 </span><span class="date">{{ ticket.hour | date ('H:i') }}</span>
                                 </div>
                                 <div class="card__price">
                                     {{ticket.price}} €
@@ -32,19 +31,18 @@
                             </a>
                             </a>
                             {% if app.user %}
-                                <a href="{{ path('contact') }}">
+                                <a href="{{ path('confirmation') }}">
                                 <button class="btn btn-primary btn-sm mt-1">Book now</button>
                                 </a>
                             {% endif %}
                         </div>
-
                     </div>
-                </div><!-- /card__box -->
+                </div>
                     {% endif %}
             {% endfor %}
-
         </div>
-    </div>
+
     </div>
 </section>
 {% endblock %}
+

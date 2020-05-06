@@ -33,44 +33,28 @@ class Ticket
      */
     private $hour;
 
-    /**
-     * @return mixed
-     */
-    public function getHour()
-    {
-        return $this->hour;
-    }
-
-    /**
-     * @param mixed $hour
-     */
-    public function setHour($hour): void
-    {
-        $this->hour = $hour;
-    }
 
     /**
      * @ORM\Column(type="float")
      */
     private $price;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Book", mappedBy="ticket")
-     */
-    private $books;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $spectator;
+    private $quantity;
 
-
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\BookTicket", mappedBy="ticket")
+     */
+    private $bookTickets;
 
     public function __construct()
     {
-        $this->books = new ArrayCollection();
-        $this->reservations = new ArrayCollection();
+        $this->bookTickets = new ArrayCollection();
     }
+
 
     public function getId(): ?int
     {
@@ -113,45 +97,67 @@ class Ticket
         return $this;
     }
 
+
     /**
-     * @return Collection|Book[]
+     * @return mixed
      */
-    public function getBooks(): Collection
+    public function getHour()
     {
-        return $this->books;
+        return $this->hour;
     }
 
-    public function addBook(Book $book): self
+    /**
+     * @param mixed $hour
+     */
+    public function setHour($hour): void
     {
-        if (!$this->books->contains($book)) {
-            $this->books[] = $book;
-            $book->setTicket($this);
+        $this->hour = $hour;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getQuantity()
+    {
+        return $this->quantity;
+    }
+
+    /**
+     * @param mixed $quantity
+     */
+    public function setQuantity($quantity): void
+    {
+        $this->quantity = $quantity;
+    }
+
+    /**
+     * @return Collection|BookTicket[]
+     */
+    public function getBookTickets(): Collection
+    {
+        return $this->bookTickets;
+    }
+
+    public function addBookTicket(BookTicket $bookTicket): self
+    {
+        if (!$this->bookTickets->contains($bookTicket)) {
+            $this->bookTickets[] = $bookTicket;
+            $bookTicket->setTicket($this);
         }
 
         return $this;
     }
 
-    public function removeBook(Book $book): self
+    public function removeBookTicket(BookTicket $bookTicket): self
     {
-        if ($this->books->contains($book)) {
-            $this->books->removeElement($book);
+        if ($this->bookTickets->contains($bookTicket)) {
+            $this->bookTickets->removeElement($bookTicket);
             // set the owning side to null (unless already changed)
-            if ($book->getTicket() === $this) {
-                $book->setTicket(null);
+            if ($bookTicket->getTicket() === $this) {
+                $bookTicket->setTicket(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getSpectator(): ?int
-    {
-        return $this->spectator;
-    }
-
-    public function setSpectator(?int $spectator): self
-    {
-        $this->spectator = $spectator;
 
         return $this;
     }

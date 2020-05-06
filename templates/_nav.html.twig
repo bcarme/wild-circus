@@ -1,10 +1,11 @@
+
 <nav class="navbar navbar-expand-lg navbar-light bg-dark">
     <a class="navbar-brand" href="#">Wild Circus</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <a class="navbar-nav">
+        <div class="navbar-nav">
             <a class="nav-item nav-link active" href="{{ path('home') }}">Home <span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link" href="{{ path('about_us') }}">About Us</a>
             <a class="nav-item nav-link" href="{{ path('performance_view') }}">Performances</a>
@@ -16,7 +17,7 @@
                 <a class="nav-item nav-link" href="{{ path('app_login') }}">Log in</a>
                     <a class="nav-item nav-link" href="{{ path('app_register') }}">Sign up</a>
             {% endif %}
-        </a>
         </div>
-    </div>
-</nav>
+        </div>
+ </nav>
+

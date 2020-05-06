@@ -38,18 +38,8 @@ class User implements UserInterface
      */
     private $password;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Book", mappedBy="author")
-     */
-    private $comment;
 
 
-    public function __construct()
-    {
-        $this->show_name = new ArrayCollection();
-        $this->comment = new ArrayCollection();
-        $this->reservations = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -128,68 +118,5 @@ class User implements UserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
-
-    /**
-     * @return Collection|Booking[]
-     */
-    public function getShowName(): Collection
-    {
-        return $this->show_name;
-    }
-
-    public function addShowName(Booking $showName): self
-    {
-        if (!$this->show_name->contains($showName)) {
-            $this->show_name[] = $showName;
-            $showName->setAuthor($this);
-        }
-
-        return $this;
-    }
-
-    public function removeShowName(Booking $showName): self
-    {
-        if ($this->show_name->contains($showName)) {
-            $this->show_name->removeElement($showName);
-            // set the owning side to null (unless already changed)
-            if ($showName->getAuthor() === $this) {
-                $showName->setAuthor(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Book[]
-     */
-    public function getComment(): Collection
-    {
-        return $this->comment;
-    }
-
-    public function addComment(Book $comment): self
-    {
-        if (!$this->comment->contains($comment)) {
-            $this->comment[] = $comment;
-            $comment->setAuthor($this);
-        }
-
-        return $this;
-    }
-
-    public function removeComment(Book $comment): self
-    {
-        if ($this->comment->contains($comment)) {
-            $this->comment->removeElement($comment);
-            // set the owning side to null (unless already changed)
-            if ($comment->getAuthor() === $this) {
-                $comment->setAuthor(null);
-            }
-        }
-
-        return $this;
-    }
-
 
 }

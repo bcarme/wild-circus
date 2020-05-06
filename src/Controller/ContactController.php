@@ -31,7 +31,7 @@ class ContactController extends AbstractController
             $dataContact = $form->getData();
             $email = (new Email())
                 ->from($this->getParameter('mailer_from'))
-                ->to($this->getParameter('mailer_from'))
+                ->to($this->getParameter('mailer_to'))
                 ->subject('You have received a message.')
                 ->html($this->renderView('emails/contact.html.twig', [
                     'dataContact' => $dataContact
