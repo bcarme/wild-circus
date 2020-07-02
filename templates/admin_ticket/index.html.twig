@@ -13,6 +13,8 @@
                 <th>Date</th>
                 <th>Performance</th>
                 <th>Price</th>
+                <th>Capacity Max</th>
+                <th>Number of ticket booked</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -22,6 +24,8 @@
                 <td>{{ ticket.date ? ticket.date|date('d M Y') : ''}}</td>
                 <td>{{ ticket.performanceName.title }}</td>
                 <td>{{ ticket.price }} €</td>
+                <td>{{ ticket.capacityMax }}</td>
+                <td>{{ ticket.nbTicketsold }}</td>
                 <td  class="d-flex pt-3">
                     <a href="{{ path('admin_ticket_show', {'id': ticket.id}) }}" class="btn btn-secondary mr-2">show</a>
                     <a href="{{ path('admin_ticket_edit', {'id': ticket.id}) }}" class="btn btn-success mr-2">edit</a>

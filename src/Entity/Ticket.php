@@ -43,16 +43,39 @@ class Ticket
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $quantity;
+    private $capacityMax;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\BookTicket", mappedBy="ticket")
      */
     private $bookTickets;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $nbTicketSold;
+
+
+    /**
+     * @return mixed
+     */
+    public function getCapacityMax()
+    {
+        return $this->capacityMax;
+    }
+
+    /**
+     * @param mixed $capacityMax
+     */
+    public function setCapacityMax($capacityMax): void
+    {
+        $this->capacityMax = $capacityMax;
+    }
+
     public function __construct()
     {
         $this->bookTickets = new ArrayCollection();
+        $this->nbTicketSold = new ArrayCollection();
     }
 
 
@@ -114,23 +137,6 @@ class Ticket
         $this->hour = $hour;
     }
 
-
-    /**
-     * @return mixed
-     */
-    public function getQuantity()
-    {
-        return $this->quantity;
-    }
-
-    /**
-     * @param mixed $quantity
-     */
-    public function setQuantity($quantity): void
-    {
-        $this->quantity = $quantity;
-    }
-
     /**
      * @return Collection|BookTicket[]
      */
@@ -162,5 +168,20 @@ class Ticket
         return $this;
     }
 
+    /**
+     * @return ArrayCollection
+     */
+    public function getNbTicketSold(): ArrayCollection
+    {
+        return $this->nbTicketSold;
+    }
+
+    /**
+     * @param ArrayCollection $nbTicketSold
+     */
+    public function setNbTicketSold(ArrayCollection $nbTicketSold): void
+    {
+        $this->nbTicketSold = $nbTicketSold;
+    }
 
 }

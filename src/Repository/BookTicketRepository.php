@@ -17,34 +17,19 @@ class BookTicketRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, BookTicket::class);
-    }
 
-    // /**
-    //  * @return BookTicket[] Returns an array of BookTicket objects
-    //  */
+    }
     /*
-    public function findByExampleField($value)
+    public function findByPerformance($value): ?BookTicket
     {
-        return $this->createQueryBuilder('b')
-            ->andWhere('b.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('b.id', 'ASC')
-            ->setMaxResults(10)
+      return $this->createQueryBuilder('fc')
+            ->andWhere('fc.category = :category')
+            ->setParameter('category', $category)
+            ->select('SUM(fc.numberPrinted) as fortunesPrinted')
             ->getQuery()
-            ->getResult()
+            ->getOneOrNullResult();
         ;
     }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?BookTicket
-    {
-        return $this->createQueryBuilder('b')
-            ->andWhere('b.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
     */
 }

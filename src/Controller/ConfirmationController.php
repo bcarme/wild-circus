@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Ticket;
 use App\Entity\BookTicket;
 use App\Form\BookTicketType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -34,15 +35,18 @@ class ConfirmationController extends AbstractController
             $entityManager->persist($bookticket);
             $entityManager->flush();
 
-            //qr code
+
+            //booking code
+            $random_hash = substr(md5(uniqid(rand(), true)), 8, 8);
 
             // Instantiate Dompdf PDF with our options
             $pdfOptions = new Options();
-            $pdfOptions->set('defaultFont', 'Arial');
+            $pdfOptions->setIsRemoteEnabled(true);
             $dompdf = new Dompdf($pdfOptions);
             $html = $this->renderView('confirmation/mypdf.html.twig', [
                 'title' => "Your e-ticket",
                 'bookticket'=>$bookticket,
+                'random'=>$random_hash
             ]);
             $dompdf->loadHtml($html);
             $dompdf->setPaper('A4', 'portrait');
@@ -89,4 +93,6 @@ class ConfirmationController extends AbstractController
             "Attachment" => false
         ]);
     }
+
+
 }

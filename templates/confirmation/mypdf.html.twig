@@ -3,13 +3,32 @@
 
 {% block layout %}
     <div class="container-fluid p-5">
-    <h1>Your e-ticket</h1>
+    <h1 style="color:white; background-color: black; text-align: center">Your e-ticket  {{ random | upper}}</h1>
+        <div class="row">
+            <div style=" float: left;  width: 50%;">
+                <h4>Name : {{ bookticket.firstname }} {{ bookticket.lastname }}</h4>
+                <h4>Email : {{ bookticket.email}} </h4>
+                <h4>Performance : {{ bookticket.ticket.performanceName.title }}</h4>
+                    <h4>Date : {{ bookticket.ticket.date | date("d M Y") }}</h4>
+                <h4>Quantity : {{ bookticket.quantity }} </h4>
+                {% set total = bookticket.ticket.price *  bookticket.quantity %}
+                <h4>Total price : {{ total }} € to pay at the ticket desk</h4>
+            </div>
+            <div style=" float: left;  width: 50%;">
+              <img src="{{ bookticket.ticket.performanceName.image }}" alt="ticket image" style="width:350px;">
+            </div>
+        </div>
 
-        <h3>Name : {{ bookticket.firstname }} {{ bookticket.lastname }}</h3>
-        <h3>Email : {{ bookticket.email}} </h3>
-        <h3>Performance : {{ bookticket.ticket.performanceName.title }} on {{ bookticket.ticket.date | date("d M Y") }}</h3>
-        <h3>Quantity : {{ bookticket.quantity }} </h3>
-        {% set total = bookticket.ticket.price *  bookticket.quantity %}
-        <h3>Total price : {{ total }} €</h3>
+         <div style="content: ''; display: table;  clear: both;">
+            <p style="font-size:10px;"> Sales Conditions: an event ticket cannot be reimbursed, even if lost or stolen, and cannot be
+                returned or exchanged, except if the event is cancelled or the organiser decides to refund the tickets.
+                A ticket cannot be resold at a higher price than the face value.
+                Events take place under the sole responsibility of the organiser. Wild Circus cannot, in any circumstances, be held liable.
+                If a cancellation or change in the date, time or place of an event for which you have reserved seats is announced,
+                you agree to Wild Circus, as much as possible and after having been informed by the organiser,
+                using the contact details you gave when making your reservation to keep you informed of the steps to take.
+                In any case, we advise you to check for any changes 24 hours before your event, by telephone on 01.41.57.32.19 or in one of our sales outlets.  </p>
+            </div>
     </div>
+
 {% endblock %}

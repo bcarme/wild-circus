@@ -17,7 +17,10 @@ nav{
     z-index: 4;
 }
 
-.nav-link, .navbar-brand{
+nav-item{
+    color:whitesmoke;
+}
+.navbar-nav, .nav-item, .nav-link, .navbar-brand{
     color:whitesmoke;
     font-size: 1em;
     font-weight: bold;

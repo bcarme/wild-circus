@@ -13,7 +13,8 @@
                     <div class="card_card shadow">
                         <div class="card__img">
                             <img class="card__img-preview" src="{{ticket.performanceName.image }}" alt="Image name">
-                            <div class="card-img-overlay"><span class="badge badge-pill badge-danger">12 ticket left</span> </div>
+
+                            <div class="card-img-overlay"><span class="badge badge-pill badge-danger">{{ ticket.capacityMax }} tickets</span> </div>
                         </div>
                         <div class="card__content">
                             <h4 class="card__title">{{ticket.performanceName.title}}</h4>

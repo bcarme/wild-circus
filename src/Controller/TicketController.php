@@ -17,11 +17,11 @@ use Symfony\Component\HttpFoundation\Request;
 
 class TicketController extends AbstractController
 {
-        /**
-         * @Route("/buy-ticket", name="buy_ticket")
-         * @param Request $request
-         * @return Response
-         */
+    /**
+     * @Route("/buy-ticket", name="buy_ticket")
+     * @param Request $request
+     * @return Response
+     */
         public function index(Request $request): Response {
         $performances = $this->getDoctrine()
             ->getRepository(Performance::class)
@@ -29,6 +29,7 @@ class TicketController extends AbstractController
         $tickets = $this->getDoctrine()
             ->getRepository(Ticket::class)
             ->findAll();
+
 
 
         return $this->render('buy_ticket/index.html.twig', [
